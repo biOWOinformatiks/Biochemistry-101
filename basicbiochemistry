@@ -1,0 +1,248 @@
+import math
+
+# Calculate the molecular weight of a protein
+def calculate_molecular_weight(protein_sequence):
+    aa_weights = {
+        'A': 71.07,
+        'R': 156.18,
+        'N': 114.10,
+        'D': 115.08,
+        'C': 103.14,
+        'E': 129.12,
+        'Q': 128.13,
+        'G': 57.05,
+        'H': 137.14,
+        'I': 113.16,
+        'L': 113.16,
+        'K': 128.18,
+        'M': 131.20,
+        'F': 147.18,
+        'P': 97.12,
+        'S': 87.08,
+        'T': 101.11,
+        'W': 186.22,
+        'Y': 163.18,
+        'V': 99.13
+    }
+    weight = 18.02  # start with the weight of a water molecule
+    for aa in protein_sequence:
+        weight += aa_weights[aa]
+    return weight
+
+# Calculate the molar concentration of a solution
+def calculate_molar_concentration(mass, volume, molecular_weight):
+    moles = mass / molecular_weight
+    concentration = moles / volume
+    return concentration
+
+# Calculate the pH of a solution
+def calculate_ph(pka, concentration_acid, concentration_base):
+    ratio = concentration_base / concentration_acid
+    log_term = math.log10(ratio)
+    ph = pka + log_term
+    return ph
+
+# Test the functions with some sample data
+protein_sequence = 'MKSADAIRKLYAMGQDPMPTSDPYDKPVDGEIVNDLPGRSVETVQPEQLEQFVEVGDRLREAHSLM'
+molecular_weight = calculate_molecular_weight(protein_sequence)
+print(f"The molecular weight of the protein is: {molecular_weight:.2f} g/mol")
+
+mass = 0.1  # 100 mg
+volume = 10  # 10 mL
+molecular_weight = 42.08  # molecular weight of sodium hydroxide
+molar_concentration = calculate_molar_concentration(mass, volume, molecular_weight)
+print(f"The molar concentration of the solution is: {molar_concentration:.2f} M")
+
+pka = 4.8
+concentration_acid = 1e-2  # 0.01 M
+concentration_base = 1e-4  # 0.0001 M
+ph = calculate_ph(pka, concentration_acid, concentration_base)
+print(f"The pH of the solution is: {ph:.2f}")
+
+# Calculate the absorbance of a solution
+def calculate_absorbance(extinction_coefficient, path_length, concentration):
+    absorbance = extinction_coefficient * path_length * concentration
+    return absorbance
+
+# Calculate the turnover number of an enzyme
+def calculate_turnover_number(kcat, enzyme_concentration):
+    turnover_number = kcat * enzyme_concentration
+    return turnover_number
+
+# Calculate the Michaelis-Menten constant of an enzyme
+def calculate_mm_constant(kcat, enzyme_concentration, substrate_concentration):
+    mm_constant = (kcat * enzyme_concentration) / substrate_concentration
+    return mm_constant
+
+# Calculate the delta G of a reaction
+def calculate_delta_g(delta_h, delta_s, temperature):
+    R = 8.314  # gas constant in J/(mol*K)
+    delta_g = delta_h - temperature * delta_s
+    return delta_g
+
+# Test the new functions with some sample data
+extinction_coefficient = 5500  # M^-1 cm^-1
+path_length = 1  # cm
+concentration = 1e-6  # M
+absorbance = calculate_absorbance(extinction_coefficient, path_length, concentration)
+print(f"The absorbance of the solution is: {absorbance:.2f}")
+
+kcat = 50  # s^-1
+enzyme_concentration = 1e-6  # M
+turnover_number = calculate_turnover_number(kcat, enzyme_concentration)
+print(f"The turnover number of the enzyme is: {turnover_number:.2f}")
+
+kcat = 50  # s^-1
+enzyme_concentration = 1e-6  # M
+substrate_concentration = 1e-4  # M
+mm_constant = calculate_mm_constant(kcat, enzyme_concentration, substrate_concentration)
+print(f"The Michaelis-Menten constant of the enzyme is: {mm_constant:.2f} M")
+
+delta_h = -10  # kJ/mol
+delta_s = 50  # J/(mol*K)
+temperature = 298  # K
+delta_g = calculate_delta_g(delta_h * 1000, delta_s, temperature)
+print(f"The delta G of the reaction is: {delta_g:.2f} kJ/mol")
+
+# Calculate the absorbance of a solution
+def calculate_absorbance(extinction_coefficient, path_length, concentration):
+    absorbance = extinction_coefficient * path_length * concentration
+    return absorbance
+
+# Calculate the turnover number of an enzyme
+def calculate_turnover_number(kcat, enzyme_concentration):
+    turnover_number = kcat * enzyme_concentration
+    return turnover_number
+
+# Calculate the Michaelis-Menten constant of an enzyme
+def calculate_mm_constant(kcat, enzyme_concentration, substrate_concentration):
+    mm_constant = (kcat * enzyme_concentration) / substrate_concentration
+    return mm_constant
+
+# Calculate the delta G of a reaction
+def calculate_delta_g(delta_h, delta_s, temperature):
+    R = 8.314  # gas constant in J/(mol*K)
+    delta_g = delta_h - temperature * delta_s
+    return delta_g
+
+# Test the new functions with some sample data
+extinction_coefficient = 5500  # M^-1 cm^-1
+path_length = 1  # cm
+concentration = 1e-6  # M
+absorbance = calculate_absorbance(extinction_coefficient, path_length, concentration)
+print(f"The absorbance of the solution is: {absorbance:.2f}")
+
+kcat = 50  # s^-1
+enzyme_concentration = 1e-6  # M
+turnover_number = calculate_turnover_number(kcat, enzyme_concentration)
+print(f"The turnover number of the enzyme is: {turnover_number:.2f}")
+
+kcat = 50  # s^-1
+enzyme_concentration = 1e-6  # M
+substrate_concentration = 1e-4  # M
+mm_constant = calculate_mm_constant(kcat, enzyme_concentration, substrate_concentration)
+print(f"The Michaelis-Menten constant of the enzyme is: {mm_constant:.2f} M")
+
+delta_h = -10  # kJ/mol
+delta_s = 50  # J/(mol*K)
+temperature = 298  # K
+delta_g = calculate_delta_g(delta_h * 1000, delta_s, temperature)
+print(f"The delta G of the reaction is: {delta_g:.2f} kJ/mol")
+
+# Calculate the specific activity of an enzyme
+def calculate_specific_activity(enzyme_activity, total_protein):
+    specific_activity = enzyme_activity / total_protein
+    return specific_activity
+
+# Calculate the equilibrium constant of a reaction
+def calculate_equilibrium_constant(reactants, products):
+    reactant_concentration = 1
+    product_concentration = 1
+    for r in reactants:
+        reactant_concentration *= r
+    for p in products:
+        product_concentration *= p
+    equilibrium_constant = product_concentration / reactant_concentration
+    return equilibrium_constant
+
+# Calculate the turnover rate of a reaction
+def calculate_turnover_rate(enzyme_concentration, substrate_concentration, kcat, km):
+    turnover_rate = kcat * enzyme_concentration * substrate_concentration / (km + substrate_concentration)
+    return turnover_rate
+
+# Calculate the maximum velocity of an enzyme
+def calculate_max_velocity(kcat, enzyme_concentration):
+    max_velocity = kcat * enzyme_concentration
+    return max_velocity
+
+# Test the new functions with some sample data
+enzyme_activity = 2  # U
+total_protein = 0.1  # mg
+specific_activity = calculate_specific_activity(enzyme_activity, total_protein)
+print(f"The specific activity of the enzyme is: {specific_activity:.2f} U/mg")
+
+reactants = [2, 1]
+products = [1, 1]
+equilibrium_constant = calculate_equilibrium_constant(reactants, products)
+print(f"The equilibrium constant of the reaction is: {equilibrium_constant:.2f}")
+
+enzyme_concentration = 1e-6  # M
+substrate_concentration = 1e-4  # M
+kcat = 50  # s^-1
+km = 1e-5  # M
+turnover_rate = calculate_turnover_rate(enzyme_concentration, substrate_concentration, kcat, km)
+print(f"The turnover rate of the reaction is: {turnover_rate:.2f} M/s")
+
+kcat = 50  # s^-1
+enzyme_concentration = 1e-6  # M
+max_velocity = calculate_max_velocity(kcat, enzyme_concentration)
+print(f"The maximum velocity of the enzyme is: {max_velocity:.2f} M/s")
+
+# Calculate the Hill equation for a cooperative enzyme
+def calculate_hill_equation(concentration, km, kcat, hill_coefficient):
+    velocity = kcat * concentration ** hill_coefficient / (km ** hill_coefficient + concentration ** hill_coefficient)
+    return velocity
+
+# Calculate the rate of an enzymatic reaction
+def calculate_enzyme_reaction_rate(enzyme_concentration, substrate_concentration, km, kcat):
+    velocity = kcat * enzyme_concentration * substrate_concentration / (km + substrate_concentration)
+    return velocity
+
+# Calculate the pH of a buffer solution
+def calculate_buffer_ph(pka, concentration_acid, concentration_base):
+    ratio = concentration_base / concentration_acid
+    ph = pka + math.log10(ratio)
+    return ph
+
+# Calculate the molar extinction coefficient of a molecule
+def calculate_molar_extinction_coefficient(absorbance, concentration, path_length):
+    molar_extinction_coefficient = absorbance / (concentration * path_length)
+    return molar_extinction_coefficient
+
+# Test the new functions with some sample data
+concentration = 1e-6  # M
+km = 1e-5  # M
+kcat = 50  # s^-1
+hill_coefficient = 2
+velocity = calculate_hill_equation(concentration, km, kcat, hill_coefficient)
+print(f"The velocity of the reaction is: {velocity:.2f} M/s")
+
+enzyme_concentration = 1e-6  # M
+substrate_concentration = 1e-4  # M
+km = 1e-5  # M
+kcat = 50  # s^-1
+velocity = calculate_enzyme_reaction_rate(enzyme_concentration, substrate_concentration, km, kcat)
+print(f"The rate of the enzymatic reaction is: {velocity:.2f} M/s")
+
+pka = 4.8
+concentration_acid = 1e-4  # M
+concentration_base = 1e-2  # M
+ph = calculate_buffer_ph(pka, concentration_acid, concentration_base)
+print(f"The pH of the buffer solution is: {ph:.2f}")
+
+absorbance = 1.5
+concentration = 1e-5  # M
+path_length = 1  # cm
+molar_extinction_coefficient = calculate_molar_extinction_coefficient(absorbance, concentration, path_length)
+print(f"The molar extinction coefficient of the molecule is: {molar_extinction_coefficient:.2f} M^-1 cm^-1")
+
