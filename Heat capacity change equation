@@ -1,0 +1,7 @@
+def heat_capacity_change(reactants, products):
+    heat_capacity_change = 0
+    for r in reactants:
+        heat_capacity_change += r.get_heat_capacity()
+    for p in products:
+        heat_capacity_change -= p.get_heat_capacity()
+    return heat_capacity_change
