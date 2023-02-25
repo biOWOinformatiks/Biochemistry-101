@@ -1,3 +1,0 @@
-def strong_acid_ph(concentration):
-    ph = -math.log10(concentration)
-    return ph

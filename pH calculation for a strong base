@@ -1,0 +1,4 @@
+def strong_base_ph(concentration):
+    poh = -math.log10(concentration)
+    ph = 14 - poh
+    return ph
