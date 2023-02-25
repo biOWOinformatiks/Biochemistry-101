@@ -1,0 +1,7 @@
+def enthalpy_change(reactants, products):
+    enthalpy_change = 0
+    for r in reactants:
+        enthalpy_change += r.get_enthalpy()
+    for p in products:
+        enthalpy_change -= p.get_enthalpy()
+    return enthalpy_change
