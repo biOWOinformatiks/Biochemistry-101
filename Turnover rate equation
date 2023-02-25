@@ -1,0 +1,3 @@
+def turnover_rate(vmax, enzyme_concentration):
+    kcat = vmax / enzyme_concentration
+    return kcat
