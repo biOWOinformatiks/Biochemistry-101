@@ -1,0 +1,3 @@
+def gibbs_free_energy(enthalpy_change, entropy_change, temperature):
+    gibbs_free_energy = enthalpy_change - temperature * entropy_change
+    return gibbs_free_energy
