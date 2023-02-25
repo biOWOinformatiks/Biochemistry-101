@@ -1,0 +1,4 @@
+def rate_constant(pre_exponential_factor, activation_energy, temperature):
+    r = 8.314  # J/(mol K)
+    k = pre_exponential_factor * math.exp(-activation_energy / (r * temperature))
+    return k
