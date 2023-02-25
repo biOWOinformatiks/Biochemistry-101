@@ -1,0 +1,4 @@
+def weak_acid_ph(pka, acid_concentration, base_concentration):
+    ratio = base_concentration / acid_concentration
+    ph = pka + math.log10(ratio)
+    return ph
