@@ -1,0 +1,7 @@
+def entropy_change(reactants, products):
+    entropy_change = 0
+    for r in reactants:
+        entropy_change += r.get_entropy()
+    for p in products:
+        entropy_change -= p.get_entropy()
+    return entropy_change
