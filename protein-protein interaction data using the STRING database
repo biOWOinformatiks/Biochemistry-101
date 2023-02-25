@@ -1,0 +1,39 @@
+import requests
+import json
+import pandas as pd
+import networkx as nx
+import matplotlib.pyplot as plt
+
+# Query the STRING database for protein-protein interactions
+base_url = 'https://string-db.org/api'
+protein_list = ['CDK2', 'CCNE1', 'RB1', 'E2F1']
+params = {
+    'identifiers': '%0d'.join(protein_list),
+    'species': 9606, # Homo sapiens
+    'caller_identity': 'MyApp',
+    'limit': 1000,
+    'network_flavor': 'confidence'
+}
+response = requests.post(base_url + '/network', data=params)
+network_data = json.loads(response.text)
+
+# Create a NetworkX graph of the protein-protein interactions
+graph = nx.Graph()
+for node in network_data['nodes']:
+    graph.add_node(node['name'], size=node['score'])
+for edge in network_data['edges']:
+    graph.add_edge(edge['source'], edge['target'], weight=edge['score'])
+
+# Calculate the betweenness centrality of each node
+betweenness = nx.betweenness_centrality(graph)
+
+# Plot the protein-protein interaction network with node size and color corresponding to betweenness centrality
+node_sizes = [betweenness[n] * 5000 for n in graph.nodes()]
+node_colors = [betweenness[n] for n in graph.nodes()]
+pos = nx.spring_layout(graph, k=0.5, seed=123)
+nx.draw_networkx_nodes(graph, pos, node_size=node_sizes, node_color=node_colors, cmap=plt.cm.Blues)
+nx.draw_networkx_edges(graph, pos, edge_color='gray')
+nx.draw_networkx_labels(graph, pos, font_size=10, font_family='sans-serif')
+plt.axis('off')
+plt.title('Protein-protein interaction network')
+plt.show()
