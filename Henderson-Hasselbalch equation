@@ -1,0 +1,3 @@
+def henderson_hasselbalch(pka, acid_concentration, conjugate_base_concentration):
+    ph = pka + math.log10(conjugate_base_concentration / acid_concentration)
+    return ph
