@@ -1,0 +1,3 @@
+def michaelis_menten(vmax, km, substrate_concentration):
+    velocity = (vmax * substrate_concentration) / (km + substrate_concentration)
+    return velocity
