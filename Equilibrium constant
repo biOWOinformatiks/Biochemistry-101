@@ -1,1 +1,9 @@
-
+def equilibrium_constant(reactants, products):
+    reactant_concentration = 1
+    product_concentration = 1
+    for r in reactants:
+        reactant_concentration *= r
+    for p in products:
+        product_concentration *= p
+    equilibrium_constant = product_concentration / reactant_concentration
+    return equilibrium_constant
